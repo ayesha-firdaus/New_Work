@@ -1,4 +1,5 @@
 const validator=require("validator");
+const bcrypt=require("bcryptjs");
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -54,6 +55,18 @@ const userSchema=new mongoose.Schema({
   
 },{
     timestamps:true
+})
+userSchema.pre('save',async function(next){
+    if(!this.isModified('password'))
+    {
+        return next();
+
+    }
+    this.password=await bcrypt.hash(this.password,12);
+    this.passwordConfirm=undefined;
+    next();
+    
+
 })
 const User=mongoose.model('user',userSchema);
 module.exports=User;
