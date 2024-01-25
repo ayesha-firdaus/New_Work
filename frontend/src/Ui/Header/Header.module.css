@@ -1,0 +1,18 @@
+.headerContainer{
+    max-width: 120rem;
+    margin: 0 auto;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.headerStyle{
+font-size: 3rem;
+color: #01497c;
+font-weight: 700;
+text-align: center;
+padding: 1rem;
+}

@@ -1,0 +1,27 @@
+.button{
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+  
+    justify-content: center;
+    
+}
+.btn{
+
+    padding: 0.8rem 2.4rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    transition: all 0.03s;
+}
+.btn,.btn:link,.btn.visited{
+   color: #fff;
+    background-color: #01497c;
+}
+.btn:hover,.btn:active{
+    color:#fff;
+    background-color: #013357;
+}
+

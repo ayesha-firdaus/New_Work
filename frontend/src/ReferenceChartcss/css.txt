@@ -1,0 +1,22 @@
+/* 
+tYpography:
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+-font-weight:
+-Line height:
+1
+small=1.05
+paragraph-1.6
+-colors
+  Tint:#fdf2e9;
+  Shade:
+  Accents:
+  Greys
+  #555
+  #333
+  primary:#e67e22
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/

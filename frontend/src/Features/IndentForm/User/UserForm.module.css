@@ -1,0 +1,65 @@
+table {
+    border-collapse: collapse;
+     width: 100%;
+    margin-bottom: 2rem;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+
+ 
+}
+input,textarea{
+    width: 100%;
+    text-align: center;
+}
+.IndenterDetails{
+    display: grid;
+    grid-template-columns: 15fr 35fr 15fr 35fr;
+ 
+}
+.align{
+    display: grid;
+    grid-template-columns: 10fr 90fr;
+    align-items: center;
+}
+.Application{
+    display: grid;
+    grid-template-columns: 30fr 70fr;
+}
+.forDelete{
+    display: flex;
+    gap: 1rem;
+
+}
+.delete{
+    color: red;
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+.comments{
+   display: flex;
+   gap: 2rem;
+   align-items: center;
+   margin-bottom: 2rem;
+}
+.ItemsTable{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60fr 20fr 20fr;
+}
+.amount{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15fr 40fr 15fr 30fr;
+   
+}
+
+.disabled {
+    background-color: #d3d3d3; /* Light grey */
+    color: #808080; /* Dark grey */
+    cursor: not-allowed;
+}
