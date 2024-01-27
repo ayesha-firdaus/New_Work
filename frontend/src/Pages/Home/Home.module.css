@@ -1,0 +1,40 @@
+.HomeDesign{
+    max-width: 120rem;
+    margin:0rem auto;
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    background-color: aliceblue;
+    padding: 2rem;
+height: 90vh;
+justify-content: center;
+
+
+
+
+}
+.heroTextBox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.heroheading{
+    font-size: 8.4rem;
+    color: #333;
+    letter-spacing: -1.2px;
+
+}
+
+.imgContainer
+{
+    width: 100%;
+ 
+    object-fit: cover;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}

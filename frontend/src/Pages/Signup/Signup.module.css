@@ -1,0 +1,117 @@
+.signup {
+    max-width: 80rem;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .overall {
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  
+    overflow: hidden; /* Ensures the gradient doesn't overflow the container */
+  border-radius: 5px;
+    /* Background image styling */
+    background-image:  linear-gradient(to bottom, #6494eda2, rgba(14, 136, 223, 0.568)), url("../../images/signup1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    /* Linear gradient overlay using ::before pseudo-element */
+  
+  }
+  .form {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formHeading {
+    font-size: 5.2rem;
+    color:#343434;
+    text-transform: capitalize;
+    margin-bottom: 1.5rem;
+    text-align: center;
+ 
+  }
+  
+.para{
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: aliceblue;
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+}
+  
+  .inputContainer {
+    text-align: center;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+  }
+  
+  .inputContainer label {
+    font-size: 1.8rem;
+    color: #343434;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+   
+  }
+  
+  .inputContainer input {
+    height: 3rem;
+    border-radius: 5px;
+    border: 1px solid #343434;
+    padding: 1rem;
+    color: #343434;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputContainer input:hover,
+  .inputContainer input:focus {
+    border-color: cornflowerblue;
+  }
+  
+  .inputContainer button {
+    border: none;
+    background-color: cornflowerblue;
+    color: #e7f1f9;
+    padding: 1.5rem 2.5rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inputContainer button:hover {
+    background-color: #343434;
+  }
+  .imgPreview
+  {
+    height: 15rem;
+    border-radius: 5px;
+    
+  }
+  @media(max-width:53em)
+  {
+    .overall{
+        grid-template-columns: 1fr;
+        margin: 2rem;
+    }
+  }

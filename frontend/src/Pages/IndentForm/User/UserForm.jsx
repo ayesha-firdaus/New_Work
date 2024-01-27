@@ -75,7 +75,7 @@ const handleDelete = (index) => {
   console.log(formData)
   return (
 
-    <form>
+    <form className={styles.form}>
        <table  >
                 <tr className={styles.IndenterDetails} >
                   <th  >Indenter’s Name</th>

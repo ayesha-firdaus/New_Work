@@ -1,0 +1,145 @@
+.design{
+    max-width: 120rem;
+    margin:0rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #6495ED;
+    padding: 1rem;
+    color:#e7f1f9 ;
+    border-radius: 5px;
+ 
+
+}
+.img{
+    width: 6rem;
+    border-radius: 5px;
+}
+.nav{
+  
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    
+}
+.mainul{
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainul li{
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+.mainul li:hover{
+  color: #343333;
+  cursor: pointer;
+}
+.itemCatelogue {
+  position: relative;
+  transition: all 0.3s;
+
+}
+
+.innerul {
+  background-color:  aliceblue;
+ border-radius: 5px;
+  position: absolute;
+  top: 100%; /* Position the inner list just below the parent */
+  left: 0;
+  display: none; /* Hide the inner list by default */
+  list-style-type: none;
+  padding: 0.8rem 1.6rem;
+  margin: 0;
+  gap: 0.5rem; /* Adjust the gap between items */
+
+}
+.innerul li{
+  margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.itemCatelogue:hover .innerul {
+  display: block; /* Show the inner list when hovering over the parent */
+}
+  .indent{
+    position: relative;
+  }
+
+ul li:hover,  .indent:hover .innerul,.itemCatelogue:hover .innerul{
+  display: block;
+
+  color:  #6495ED;
+  transition: all 0.3s;
+
+  
+
+}
+.innerul li:hover{
+  text-decoration: underline;
+}
+.menu{
+  font-size: 5rem;
+  display: none;
+}
+.close{
+  font-size: 3rem;
+  display: none;
+ 
+  
+
+}
+@media (max-width: 60em) {
+  .menu{
+    display: block;
+    cursor: pointer;
+  }
+  .show{
+    display: block;
+  }
+  .nav {
+    position: absolute;
+    background: #6495ED;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    
+    display: none;
+
+  }
+  .show{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+
+  .mainul {
+    flex-direction: column;
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 4rem;
+  }
+
+  .itemCatelogue:hover .innerul,
+  .indent:hover .innerul {
+    display: block;
+    position: static; /* Change the position to static to avoid overlapping */
+    width: 100%; /* Make the inner list take full width */
+    margin-top: 0.5rem; /* Add some top margin for spacing */
+    /* Change the text color */
+    /* Add a border to separate items */
+  }
+
+  .innerul li {
+    margin-bottom: 0.5rem; /* Adjust the margin between inner list items */
+  }
+
+}
