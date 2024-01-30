@@ -9,7 +9,8 @@ export default defineConfig({
         target:"http://localhost:5000/",
         secure:false,
       }
-    }
+    },
+    port:5174
   },
   plugins: [react()],
 })

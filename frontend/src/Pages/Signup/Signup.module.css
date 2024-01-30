@@ -108,10 +108,25 @@
     border-radius: 5px;
     
   }
+  .message{
+    letter-spacing: 1.2px;
+    font-size: 1.8rem;
+
+  }
+  .highlight{
+    color: #E36283;
+    font-weight: 600;
+    cursor: pointer;
+  }
   @media(max-width:53em)
   {
     .overall{
         grid-template-columns: 1fr;
         margin: 2rem;
+        
+    }
+    .text{
+      width: 100%;
+      height:50em;
     }
   }

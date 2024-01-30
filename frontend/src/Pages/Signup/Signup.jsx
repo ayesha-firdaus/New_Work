@@ -2,8 +2,16 @@ import React from 'react'
 import styles from "./Signup.module.css"
 import img from "../../images/signup.jpg"
 import { useState } from 'react';
+import Message from '../../Utils/Message/Message';
+import {Link, useNavigate} from "react-router-dom"
+import Button from '../../Utils/Button';
+
 export default function Signup() {
   const [formData,setformData]=useState({name:"",email:"",password:"",passwordConfirm:"",designation:"",photo:""});
+  const [error,seterror]=useState(false);
+  const [loading,setloading]=useState(false);
+  const [message,setmessage]=useState("");
+  const Navigate=useNavigate();
   const handleChange=function(e)
   {
     e.preventDefault();
@@ -64,6 +72,47 @@ export default function Signup() {
       
       setformData((prev)=>({...prev,[name]:value}));
   }
+  console.log(loading)
+  const handleSubmit=async function(e)
+  {
+   e.preventDefault();
+   try{
+    setloading(true);
+    seterror(false);
+    setmessage("");
+   const res=await fetch("/api/auth/signup",{
+    method:"POST",
+    headers:{
+      'Content-Type':'application/json',
+    },
+    body:JSON.stringify(formData)
+   })
+   const data=await res.json();
+   console.log(data);
+  if(data.status==="fail"||data.status==="error")
+   {
+   seterror(true);
+   setmessage(data.message);
+   setloading(false);
+   return;
+   }
+   setmessage(data.message);
+   setloading(false)
+   Navigate("/login");
+  }
+  catch(err)
+  {
+    seterror(true);
+    setmessage(err.message);
+    setloading(false);
+    return;
+    
+  }
+  
+   
+   
+  }
+  console.log(loading)
   console.log(formData)
   return (
     <div  className={styles.signup}>
@@ -72,7 +121,7 @@ export default function Signup() {
         <h1 className={styles.formHeading}>Sign up</h1>
         <p className={styles.para}>register to create an account</p>
         </div>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
        
         <div className={styles.inputContainer}>
           <label htmlFor='name'>Enter Your Name</label>
@@ -101,10 +150,16 @@ export default function Signup() {
 </div>
         
         <div className={styles.inputContainer}>
-         <button type='submit'>Submit</button>
+         <Button category={"formButton"} type={"submit"} loading={loading} loadmessage={"submitting"} message={"submit"} />
         </div>
+        <div  className={styles.inputContainer}>
+          <p className={styles.message}>Have an account, <span className={styles.highlight} ><Link to="/login">Login</Link></span> then</p>
+        </div>
+      {message.length>0&&<Message message={message} type={error?"error":"success"}  />}
+
         </form>
         </div>
+        
      
     </div>
   )

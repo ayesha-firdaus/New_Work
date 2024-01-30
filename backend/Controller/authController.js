@@ -2,6 +2,8 @@ const CatchAsync=require("../Utils/CatchAsync");
 const User=require("../Models/userModel");
 const jwt=require("jsonwebtoken")
 const AppError=require("../Utils/Error");
+const {promisify}=require("util");
+
 exports.signup=CatchAsync(async(req,res,next)=>{
  
    const newuser=await User.create({
@@ -42,3 +44,33 @@ exports.login=CatchAsync(async(req,res,next)=>{
     })
 
 })
+exports.protect = CatchAsync(async (req, res, next) => {
+    const token = req.cookies.access_token;
+    if (!token) {
+     // Dispatch the action to reset user state
+      return next(new AppError("You are not logged in", 401));
+    }
+  
+    const decoded = await promisify(jwt.verify)(token, process.env.jwt_secret);
+    const user = await User.findById(decoded.id);
+  
+    if (!user) {
+      dispatch(resetUser()); // Dispatch the action to reset user state
+      return next(new AppError("The account belonging to this ID no longer exists", 401));
+    }
+  
+    if (user.changedPasswordAfter(decoded.iat)) {
+      dispatch(resetUser()); // Dispatch the action to reset user state
+      return next(new AppError("The password has been changed after the token has been issued, please login again", 401));
+    }
+  
+    req.user = user;
+    next();
+  });
+  exports.logout=CatchAsync(async(req,res,next)=>{
+     res.clearCookie("access_token");
+     res.status(200).json({
+      status:"success",
+      message:"signout suceesfully"
+     })
+  })

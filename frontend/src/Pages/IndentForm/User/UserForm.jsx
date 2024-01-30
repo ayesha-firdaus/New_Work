@@ -4,10 +4,11 @@ import convert from 'number-to-words';
 import { useState } from "react";
 import Button from "../../../Utils/Button";
 const InitialItem = { id: 1, name: '', quantity: 0, price: 0.0 };
+import { getUser } from "../../../Components/redux/store";
 
 const UserForm = () => {
+  const {user}=getUser();
 
- 
   const [formData, setFormData] = useState({
     indenterName: '',
     section: '',
@@ -80,10 +81,11 @@ const handleDelete = (index) => {
                 <tr className={styles.IndenterDetails} >
                   <th  >Indenter’s Name</th>
                   <td >
-                    <input   type='text' id="indenterName" value={formData.indenterName} onChange={handleFormDataChange}></input>
+                    <input   type='text' id="indenterName"   value={user&&user.name} defaultValue={user&&
+                    user.name} onChange={handleFormDataChange}></input>
                   </td>
                   <th >Section</th>
-                  <td><input type='text' id='section'value={formData.section}     onChange={handleFormDataChange}></input></td>
+                  <td><input type='text' id='section'value={user&&user.designation}      onChange={handleFormDataChange}></input></td>
                 </tr>
               </table>
               <table  >

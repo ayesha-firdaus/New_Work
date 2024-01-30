@@ -15,6 +15,34 @@
     width: 6rem;
     border-radius: 5px;
 }
+.navContainer
+{
+
+  display: flex;
+
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+
+  
+}
+.signout{
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color:#9d0208 ;
+  font-weight: 600;
+  
+}
+.signout:hover{
+  color: #343333;
+}
 .nav{
   
     font-size: 1.5rem;
@@ -23,6 +51,15 @@
     line-height: 1.2;
     text-transform: uppercase;
     
+}
+.login{
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 10px;
 }
 .mainul{
     display: flex;
@@ -93,6 +130,10 @@ ul li:hover,  .indent:hover .innerul,.itemCatelogue:hover .innerul{
   
 
 }
+.profile{
+  width: 4rem;
+  border-radius: 50%;
+}
 @media (max-width: 60em) {
   .menu{
     display: block;
@@ -117,7 +158,10 @@ ul li:hover,  .indent:hover .innerul,.itemCatelogue:hover .innerul{
     justify-content: space-between;
     
   }
-
+.dec{
+  border-radius: 50%;
+  background-color: #343333;
+}
 
   .mainul {
     flex-direction: column;

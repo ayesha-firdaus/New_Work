@@ -1,0 +1,105 @@
+
+ .overall{
+    max-width: 80rem;
+    margin:2rem auto;
+
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 5px;
+   
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+
+}
+.text{
+   width: 100%;
+    background:linear-gradient(to bottom, #6494eda2, rgba(14, 136, 223, 0.568)),url("../../images/profile.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+}
+.text h1{
+    color: #343434;
+     font-size: 4.8rem;
+     letter-spacing: -1.2px;
+     line-height: 1.2;
+     margin-bottom: 1rem;
+
+}
+.text p{
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+
+}
+.form{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    padding: 2rem;
+}
+.inputContainer{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 1.2px;
+
+
+}
+.inputContainer label{
+ 
+    color: #343434;
+   
+   
+  
+
+}
+.inputContainer input{
+    height: 3rem;
+   
+    border-radius: 5px;
+    font-size: 1.5rem;
+    border: 1px solid #343434;
+    letter-spacing: 1.6px;
+
+  
+
+}
+.img{
+    width: 8rem;
+    border-radius: 50%;
+
+}
+.message{
+    font-size: 1.8rem;
+    letter-spacing: 1.2px;
+    color: #343434;
+    text-transform: capitalize;
+}
+.message span{
+    color:#E36283;
+    font-weight: 600;
+}
+@media(max-width:53em) {
+    .overall{
+        grid-template-columns: 1fr;
+        margin: 2rem;
+    }
+    .text{
+        height: 70rem;
+    }
+    
+}

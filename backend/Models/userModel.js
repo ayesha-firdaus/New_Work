@@ -35,10 +35,10 @@ const userSchema=new mongoose.Schema({
         required:true,
         validate:{
             validator:function(val){
-                return this.passwordConfirm===val;
+            return val===this.password;
             },
-            message:"Password Confirm does not match the password"
-        },
+            message:"PasswordConfirm does not match the password"
+        }
       
     },
     photo:{
@@ -73,5 +73,12 @@ userSchema.methods.validatePassword=async function(candidatePassword,userPasswor
     return await bcrypt.compare(candidatePassword,userPassword);
     
 }
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+    if (this.passwordChangedAt && this.isModified('password')) {
+        const passwordTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+        return JWTTimestamp < passwordTimestamp;
+    }
+    return false;
+};
 const User=mongoose.model('user',userSchema);
 module.exports=User;

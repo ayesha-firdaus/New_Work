@@ -1,13 +1,11 @@
-.button{
+.button {
     display: flex;
     align-items: center;
     margin: 2rem;
-  
     justify-content: center;
-    
 }
-.btn{
 
+.btn {
     padding: 0.8rem 2.4rem;
     font-size: 1.2rem;
     font-weight: 500;
@@ -15,13 +13,23 @@
     border-radius: 10px;
     text-transform: uppercase;
     transition: all 0.03s;
-}
-.btn,.btn:link,.btn.visited{
-   color: #fff;
-    background-color: #01497c;
-}
-.btn:hover,.btn:active{
-    color:#fff;
-    background-color: #013357;
+    color: aliceblue;
 }
 
+
+.formButton, .formButton:link, .formButton.visited {
+    background-color: #6495ED;
+}
+
+.formButton:hover, .formButton:active {
+    background-color: #333;
+}
+
+.normalbtn:link, .normalbtn.visited, .normalbtn {
+    background-color: #E36283;
+    color: aliceblue;
+}
+
+.normalbtn:hover, .normalbtn:active {
+    background-color: #e65463;
+}

@@ -7,9 +7,11 @@ const globalErrorHandler=require("../backend/Controller/errorController.js")
 const dotenv=require("dotenv");
 const AppError=require("../backend/Utils/Error.js")
 const mongoose=require("mongoose")
+const cookieparser=require("cookie-parser");
 dotenv.config();
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cookieparser());
 const db=process.env.Database;
 mongoose.connect(db).then(con=>{
     console.log("Database Connected Sucessfully");
