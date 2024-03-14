@@ -1,5 +1,6 @@
 .headerContainer{
-    max-width: 120rem;
+    max-width: inherit;
+    margin: 0 auto;
    margin-bottom: 1rem;
  
  

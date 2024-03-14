@@ -6,9 +6,9 @@ html{
   font-size: 62.5%;
 
 }
-.container{
-  max-width: 120rem;
-  margin: 0 auto;
+.container {
+  max-width: 90vw; /* Set maximum width to 100vw */
+  margin: 2rem auto; /* Center the container horizontally */
 }
 body{
   line-height: 1;

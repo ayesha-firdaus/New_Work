@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 export default function Navbar({token}) {
   
   const user=getUser();
-  console.log(user,"navbar")
+
   const dispatch=useDispatch();
   const [IndentOpen, setIndentOpen] = useState(false);
   const [itemcatelogueopen, isitemcatelogueopen] = useState(false);
@@ -49,7 +49,7 @@ export default function Navbar({token}) {
   };
 
   return (
-    <div className={styles.design}>
+    <div className={`${styles.design} container`}>
       <div>
         <Link to="/"><img src={img} className={styles.img} /></Link>
       </div>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../../../../../Components/redux/store';
+import { useNavigate } from 'react-router-dom';
 export default function ViewUserForm() {
+  const user=getUser();
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState(false);
   const [message,setMessage]=useState("");
   const [indent,setindent]=useState(null);
-const user=getUser();
-  console.log(user,user?._id)
+
+ const Navigate=useNavigate();
   useEffect(function(){async function getIndentbyId()
     {
       try{
@@ -35,12 +37,53 @@ const user=getUser();
     getIndentbyId();
     
   }
-  ,[indent])
+  ,[user._id])
+  const formatDate = (dateTimeString) => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    };
+
+    return new Intl.DateTimeFormat('en-US', options).format(new Date(dateTimeString));
+  };
+
+  const formatTime = (dateTimeString) => {
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    };
+
+    return new Intl.DateTimeFormat('en-US', options).format(new Date(dateTimeString));
+  };
   return (
- <table>
-  <th></th>
-  <th></th>
-  <th></th>
+
+ <table className='container'>
+  <thead>
+  <th>Serial No.</th>
+            <th>Indent</th>
+            <th>Indent Status</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>View</th>
+            </thead>
+            <tbody>
+              {indent?.map((el,i)=>{
+                console.log(el)
+                return (
+                  <tr>
+                    <td>{i+1}</td>
+                    <td>{el.applicationOfItems}</td>
+                    <td>{el.status}</td>
+                    <td>{formatDate(el.updatedAt)}</td>
+                  <td>{formatTime(el.updatedAt)}</td>
+                  <td onClick={()=>{Navigate(`/indent/${el._id}`)}}>View</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+           
  </table>
   )
 }

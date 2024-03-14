@@ -196,7 +196,7 @@ const handleSubmit = async (e) => {
 
     <>
    {message&& <Message message={message} type={error?"error":"success"} />}
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={`${styles.form} container`} onSubmit={handleSubmit}>
        <table  >
                 <tr className={styles.IndenterDetails} >
                   <th  >Indenter’s Name</th>
@@ -212,7 +212,7 @@ const handleSubmit = async (e) => {
 
 
               <table  >
-              <tr className={styles.IndentDetails}>
+        <tr className={styles.IndentDetails}>
         <th>Capital goods</th>
         <td><div className={styles.align}><input type="checkbox" checked={formData.capitalGoods.equipment} onChange={() => handleCheckboxChange('capitalGoods', 'equipment')} /><span>Equipment</span></div></td>
         <td><div className={styles.align}><input type="checkbox" checked={formData.capitalGoods.furniture} onChange={() => handleCheckboxChange('capitalGoods', 'furniture')} /><span>Furniture</span></div></td>
@@ -230,7 +230,7 @@ const handleSubmit = async (e) => {
         <td><div className={styles.align}><input type="checkbox" checked={formData.Services.Printing} onChange={() => handleCheckboxChange('Services', 'Printing')} /><span>Printing</span></div></td>
         <td><div className={styles.align}><input type="checkbox" checked={formData.Services.AnyOther} onChange={() => handleCheckboxChange('Services', 'AnyOther')} /><span>Any Other. Pl. Specify</span></div></td>
       </tr>
-              </table>
+    </table>
               <table className='table2'>
                 <tr className='tr1'>
                   <th  ></th>

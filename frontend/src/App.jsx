@@ -14,7 +14,7 @@ import Cookies from 'js-cookie';
 import { useState,useEffect } from 'react';
 import ViewItem from './Pages/Items/ViewItem/ViewItem';
 import Admin from "./Pages/AdminPanel/Admin";
-import ViewUserForm from './Pages/IndentForm/User/ViewUserForm/ViewUserForm';
+import ViewUserFormList from './Pages/IndentForm/User/ViewUserForm/ViewUserFormList/ViewUserFormList';
 import ApprovalList from './Pages/IndentForm/DepartmentHead/ApprovalList/ApprovalList';
 import ApproveIndent from './Pages/IndentForm/DepartmentHead/ApproveIndent/ApproveIndent';
 
@@ -42,7 +42,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/newuserform" element={<UserForm />} />
-              <Route path="/viewuserform" element={<ViewUserForm />} />
+              <Route path="/viewuserform" element={<ViewUserFormList />} />
               <Route path="/newitem" element={<NewItem />} exact />
               <Route path="/viewitem" element={<ViewItem />} exact />
               <Route path='/approvallist' element={<ApprovalList />} />
