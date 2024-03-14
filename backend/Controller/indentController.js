@@ -29,6 +29,16 @@ exports.getIndentbyId=CatchAsync(async(req,res,next)=>{
         indent
     })
 })
+
+
+exports.getIndentbyUserId=CatchAsync(async(req,res,next)=>{
+    const indent=await Indent.find({"userRef":req.params.userId});
+    res.status(200).json({
+        status:"success",
+        message:"Indent Extracted Sucessfully",
+        indent
+    })
+})
 exports.sessionHeadApproval = CatchAsync(async (req, res, next) => {
     const indentId = req.params.id;
     const { sessionApproval, materialProprietary, sessionComments } = req.body;

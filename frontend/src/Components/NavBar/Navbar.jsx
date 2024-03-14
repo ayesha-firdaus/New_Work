@@ -66,7 +66,7 @@ export default function Navbar({token}) {
                   <Link to="/newuserform">new</Link>
                 </li>
                 <li>
-                  <Link>view</Link>
+                  <Link to="/viewuserform">view</Link>
                 </li>
               </ul>
               

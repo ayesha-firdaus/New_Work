@@ -79,9 +79,7 @@ export default function ApprovalList() {
 
     return new Intl.DateTimeFormat('en-US', options).format(new Date(dateTimeString));
   };
-  const handleView=()=>{
 
-  }
 
   return (
     <div>
