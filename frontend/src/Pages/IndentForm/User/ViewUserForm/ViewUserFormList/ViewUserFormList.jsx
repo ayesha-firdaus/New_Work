@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUser } from '../../../../Components/redux/store';
+import { getUser } from '../../../../../Components/redux/store';
 export default function ViewUserForm() {
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState(false);
@@ -35,7 +35,7 @@ const user=getUser();
     getIndentbyId();
     
   }
-  ,[])
+  ,[indent])
   return (
  <table>
   <th></th>
