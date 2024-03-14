@@ -1,7 +1,7 @@
 .form{
     max-width: 120rem;
-    margin: 0 auto;
-    font-size: 1.2rem;
+    margin: 2rem auto;
+    font-size: 1.5rem;
 }
 table {
     border-collapse: collapse;
@@ -60,6 +60,7 @@ input,textarea{
     width: 100%;
     display: grid;
     grid-template-columns: 15fr 40fr 15fr 30fr;
+    margin-top: 2rem;
    
 }
 
@@ -68,3 +69,4 @@ input,textarea{
     color: #808080; /* Dark grey */
     cursor: not-allowed;
 }
+

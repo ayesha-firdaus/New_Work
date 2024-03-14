@@ -1,13 +1,14 @@
 import { useState } from "react";
 import React from 'react'
+import styles from "./ResetPassword.module.css"
 
 export default function ResetPassword() {
     const [showpassword,setshowpassword]=useState(false);
     const [showconfirmPassword,setshowconfirmPassword]=useState(false)
     const [shownewPassword,setshownewPassword]=useState(false)
   return (
-    <div>
-      <div>
+    <div >
+      <div className={styles.password}>
              
              <div>
                  <label>Current Password</label>

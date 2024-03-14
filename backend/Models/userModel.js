@@ -7,17 +7,17 @@ const userSchema=new mongoose.Schema({
         required:true,
         minlength:[3,"it should not be less than 3"],
         maxlength:[50,"it should not be greater than 50"],
-        validate:[validator.isAlpha,"Name Should only contain alphabets"]
+       
     },
     role:{
         type:String,
-        enum:['Store Manager','Employee','Admin','Hod'],
+        enum:['StoreManager','Employee','Admin','SessionHead'],
         default:'Employee'
     },
     designation:{
        type:String,
        required:true,
-       validate:[validator.isAlpha,"designation should only contain alphabets"]
+   
     },
     email:{
         type:String,

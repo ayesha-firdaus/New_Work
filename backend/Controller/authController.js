@@ -35,7 +35,8 @@ exports.login=CatchAsync(async(req,res,next)=>{
         return next(new AppError("Email or password is incorrect",401));
     }
     const token=jwt.sign({id:user._id},process.env.jwt_secret,{expiresIn:process.env.jwt_expires_in});
-    res.cookie("access_token",token,{httpOnly:true});
+    res.cookie("access_token", token, { httpOnly: true });
+
     res.status(200).json({
         status:"success",
         message:"user has been sucessfully logged in",
@@ -74,3 +75,12 @@ exports.protect = CatchAsync(async (req, res, next) => {
       message:"signout suceesfully"
      })
   })
+  exports.restrictTo=(...roles)=>{
+    return (req,res,next)=>{
+      console.log(req.user)
+      if(!roles.includes(req.user.role)){
+        return next(new AppError('you do not have permission to perform to this action',403));
+      }
+      next();
+    }
+  }

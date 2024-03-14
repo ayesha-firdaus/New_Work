@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { loading: false, error: false, user: null, message: "" };
+const initialState = { loading: false, error: false, user: null };
 
 const userReducer = createSlice({
   name: "user",
@@ -11,29 +11,29 @@ const userReducer = createSlice({
     },
     signInSucess: (state, action) => {
       state.loading = false;
-      state.user = action.payload.user;
-      state.message = action.payload.message;
+      state.user = action.payload;
+
     },
     signInError: (state, action) => {
       state.error = true;
       state.loading = false;
-      state.message = action.payload;
+  
     },
     updateInStart: (state) => {
       state.loading = true;
-      state.message="",
+  
       state.error=false;
       
     },
     updateInSuccess: (state, action) => {
       state.loading = false;
-      state.user = action.payload.user;
-      state.message = action.payload.message;
+      state.user = action.payload;
+
     },
     updateInError: (state, action) => {
-      state.error = false;
+      state.error = true;
       state.loading=false;
-      state.message = action.payload;
+ 
     },
     signoutStart:(state)=>{
       state.loading=true;

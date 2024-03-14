@@ -1,0 +1,43 @@
+.heading{
+    margin-bottom: 1.2rem;
+}
+
+.store{
+    max-width: 120rem;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+.div{
+    display: grid;
+    grid-template-columns: 70fr 30fr;
+    height: fit-content;
+
+}
+.container1{
+    width: 100%;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+}
+.inputContainer{
+    display: grid;
+    grid-template-columns: 60fr 30fr;
+   align-items: center;
+   justify-content: space-evenly;
+
+
+
+}
+.comments{
+    display: grid;
+  margin-bottom: 1rem;
+    grid-template-columns: 10% 90%;
+
+}
+.comments textarea{
+    width: 100%;
+    
+}

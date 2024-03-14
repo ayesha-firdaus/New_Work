@@ -1,0 +1,14 @@
+.tender{
+    border:1px solid  #343434;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 1rem;
+
+}

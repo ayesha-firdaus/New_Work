@@ -10,8 +10,9 @@ import {signInStart,signInSucess,signInError} from "../../Components/redux/User/
 import { useDispatch,useSelector } from 'react-redux';
 export default function Login() {
  const [formData,setformData]=useState({email:"",password:""});
-      const {loading,error,message,user}=useSelector(state=>state.user);
-      console.log(loading,error,message,user)
+      const {loading,error,user}=useSelector(state=>state.user);
+      console.log(loading,error,user)
+      const [message,setmessage]=useState("");
       const dispatch=useDispatch();
       const Navigate=useNavigate();
       const handleChange=function(e)
@@ -29,6 +30,7 @@ export default function Login() {
        e.preventDefault();
        try{
        dispatch(signInStart);
+       setmessage("");
        const res=await fetch("/api/auth/login",{
         method:"POST",
         headers:{
@@ -40,15 +42,18 @@ export default function Login() {
        console.log(data);
       if(data.status==="fail"||data.status==="error")
        {
-        dispatch(signInError(data.message));
+        dispatch(signInError());
+        setmessage(data.message)
        return;
        }
-      dispatch(signInSucess({user:data.user,message:data.message}))
+      dispatch(signInSucess(data.user))
+      setmessage(data.message)
        Navigate("/");
       }
       catch(err)
       {
         dispatch(signInError(err.message));
+        setmessage(data.message)
         return;
         
       }

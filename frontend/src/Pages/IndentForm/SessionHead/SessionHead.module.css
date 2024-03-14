@@ -1,0 +1,44 @@
+/* sessionalhead */
+.sessionHead{
+    display: grid;
+    grid-template-columns: 45fr 45fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+ 
+   
+}
+.form{
+    max-width: 120rem;
+    margin: 2rem auto;
+    font-size: 1.5rem;
+}
+.container1,.container2{
+    border: 1px solid #343434;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+  
+    flex-direction: column;
+    height: 12rem;
+  
+}
+.inputContainer{
+    display: flex;
+    align-items: center;
+   
+    justify-content: start;
+
+
+}
+.last{
+    max-width: 120rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}

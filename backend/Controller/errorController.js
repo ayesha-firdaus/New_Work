@@ -56,13 +56,14 @@ console.log(err)
   }
   else if(process.env.NODE_ENV.trim() === 'production'){
     let error={...err};
+    console.log(error._message)
     if(error.name==="CastError")
     error=handleCastErrorDB(error);
     if (error?.code === 11000) error = handleDuplicateFeildDB(error);
   
     if (error?.name ==='ValidationError')
       error =  handleValidationDB(error);
-    if(error && error._message === 'user validation failed' )
+    if(error && error._message === 'user validation failed'|| error._message === 'Validation failed'||error._message==='indent validation failed' )
     error =  handleValidationDB(error);
     if (error?.name?.trim() === 'JsonWebTokenError') error = handleJWTError();
     if (error?.name?.trim() === 'TokenExpiredError') error = handleJWTExpiredError();
