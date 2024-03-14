@@ -1,53 +1,69 @@
 
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Message from '../../../Utils/Message/Message';
 import Button from '../../../Utils/Button';
-import { getUser } from '../../../Components/redux/store';
+import { getUser, getElectronics, getCleaning, getStationary } from '../../../Components/redux/store';
 import styles from "./Newitem.module.css";
 
 export default function NewItem() {
-   
-    const user=getUser();
-    console.log(user)
-    const [formData,setformData]=useState({itemname:"",category:"stationary",units:"Each",itemcode:"",description:""});
-    const handleChange=function(e)
-    {
-   e.preventDefault();
-   const name=e.target.id;
-   const value=e.target.value;
-   setformData((prev)=>({...prev,[name]:value}));
-    }
-    const handleSubmit=async function(e){
-        e.preventDefault();
-        try{
-            const res=await fetch("/api/item/newitem",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({...formData,userRef:user._id})
-            });
-            const data=await res.json();
-            console.log(data)
-        }
-        catch(err)
-        {
-            console.log(err)
-        }
-    }
-    console.log(formData)
-  return (
-    <div>
-    
-       <form onSubmit={handleSubmit} className={styles.form}>
-       <h1>Add an Item</h1>
-        <div>
-            <label htmlFor='itemname'>Enter the item Name</label>
-            <input type='text' id='itemname'  onChange={handleChange} value={formData.itemname}/>
+    const electronics = getElectronics();
+    const cleaning = getCleaning();
+    const stationary = getStationary();
+    const user = getUser();
 
-        </div>
+    const [formData, setFormData] = useState({
+        itemname: "",
+        category: "Stationary",
+        units: "Each",
+        itemcode: ""
+    });
+
+    const handleChange = function (e) {
+        e.preventDefault();
+        const name = e.target.id;
+        const value = e.target.value;
+    
+        let code = formData.itemcode; // Preserve the existing item code
+    
+        if (name === 'category') {
+            code =
+                value === "Electronics"
+                    ? `E${electronics?.length + 1}`
+                    : value === "Stationary"
+                        ? `S${stationary?.length + 1}`
+                        : value === "Cleaning" ? `D${cleaning?.length + 1}` : '';
+        }
+        
+        setFormData((prev) => ({ ...prev, [name]: value, itemcode: code }));
+    };
+
+    const handleSubmit = async function (e) {
+        e.preventDefault();
+        try {
+            const res = await fetch("/api/item/newitem", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ ...formData, userRef: user._id, status: "pending"})
+            });
+            const data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+  console.log(formData)
+    return (
         <div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <h1>Add an Item</h1>
+                <div>
+                    <label htmlFor='itemname'>Enter the item Name</label>
+                    <input type='text' id='itemname' onChange={handleChange} value={formData.itemname} />
+                </div>
+                <div>
             <label htmlFor='category'>Enter the item category</label>
              <select id="category" onChange={handleChange} value={formData.category} >
                 <option value="Stationary" >Stationary</option>
@@ -99,17 +115,21 @@ export default function NewItem() {
 </select>
         </div>
         <div>
-            <label htmlFor='itemcode'>item Code</label>
-            <input type="text" id='itemcode'  onChange={handleChange} value={formData.itemcode}/>
-        </div>
+    <label htmlFor='itemcode'>Item Code</label>
+    <input
+        type="text"
+        id='itemcode'
+       value={formData.itemcode}
+    />
+</div>
         <div>
             <label htmlFor='description'>description</label>
             <input type="text" id='description' onChange={handleChange} value={formData.description} />
         </div>
-        <div>
-          <Button message="submit" category='formButton' type="submit" />
+                <div>
+                    <Button message="submit" category='formButton' type="submit" />
+                </div>
+            </form>
         </div>
-       </form>
-    </div>
-  )
+    );
 }

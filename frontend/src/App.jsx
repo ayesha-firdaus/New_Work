@@ -17,6 +17,7 @@ import Admin from "./Pages/AdminPanel/Admin";
 import ViewUserFormList from './Pages/IndentForm/User/ViewUserForm/ViewUserFormList/ViewUserFormList';
 import ApprovalList from './Pages/IndentForm/DepartmentHead/ApprovalList/ApprovalList';
 import ApproveIndent from './Pages/IndentForm/DepartmentHead/ApproveIndent/ApproveIndent';
+import ViewUserFormitem from './Pages/IndentForm/User/ViewUserForm/ViewUserFormitem/ViewUserFormitem';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -43,6 +44,7 @@ function App() {
               <Route path="/resetpassword" element={<ResetPassword />} />
               <Route path="/newuserform" element={<UserForm />} />
               <Route path="/viewuserform" element={<ViewUserFormList />} />
+              <Route path="/viewuserform/:id" element={<ViewUserFormitem />} />
               <Route path="/newitem" element={<NewItem />} exact />
               <Route path="/viewitem" element={<ViewItem />} exact />
               <Route path='/approvallist' element={<ApprovalList />} />

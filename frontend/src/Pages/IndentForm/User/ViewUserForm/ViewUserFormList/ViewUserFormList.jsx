@@ -37,7 +37,7 @@ export default function ViewUserForm() {
     getIndentbyId();
     
   }
-  ,[user._id])
+  ,[indent])
   const formatDate = (dateTimeString) => {
     const options = {
       year: 'numeric',
@@ -56,6 +56,10 @@ export default function ViewUserForm() {
     };
 
     return new Intl.DateTimeFormat('en-US', options).format(new Date(dateTimeString));
+  };
+  const handleNavigateAndView = (el) => {
+    // Navigate to the URL and pass 'el' to ViewUserForm
+    Navigate(`/viewuserform/${el._id}`, { state: { indentData: el } });
   };
   return (
 
@@ -78,7 +82,14 @@ export default function ViewUserForm() {
                     <td>{el.status}</td>
                     <td>{formatDate(el.updatedAt)}</td>
                   <td>{formatTime(el.updatedAt)}</td>
-                  <td onClick={()=>{Navigate(`/indent/${el._id}`)}}>View</td>
+                  <td onClick={() => {
+  Navigate(`/viewuserform/${el._id}`);
+  // Pass 'el' to ViewUserForm
+  // Call a function to handle navigation and passing data to ViewUserForm
+  handleNavigateAndView(el);
+}}>
+  View
+</td>
                   </tr>
                 )
               })}

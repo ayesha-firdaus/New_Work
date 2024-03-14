@@ -26,8 +26,15 @@ const  itemSchema=new mongoose.Schema({
        type:String,
        required:true
     },
-    userRef:{
-        type:String,
+    userRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Replace 'User' with the actual model name for users
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ["pending", "approved"],
+        required: true
     }
 
 },{

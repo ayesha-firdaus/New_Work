@@ -9,7 +9,7 @@ export default function ViewItem() {
   const cleaning=getCleaning();
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} container`}>
     <div>
     <h1>Electronics</h1>
      <table>
