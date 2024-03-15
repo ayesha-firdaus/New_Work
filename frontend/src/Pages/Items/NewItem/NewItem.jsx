@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+
 import Message from '../../../Utils/Message/Message';
 import Button from '../../../Utils/Button';
 
 import styles from "./Newitem.module.css";
 import { useNavigate } from 'react-router-dom';
+import { getElectronics,getCleaning,getStationary } from '../../../Components/redux/store';
 
 export default function NewItem() {
     const Navigate=useNavigate();

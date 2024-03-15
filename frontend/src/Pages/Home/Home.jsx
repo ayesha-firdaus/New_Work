@@ -9,7 +9,7 @@ import Button from '../../Utils/Button';
 import { getUser } from '../../Components/redux/store';
 
 export default function Home() {
-
+const user=getUser();
 
 
   
