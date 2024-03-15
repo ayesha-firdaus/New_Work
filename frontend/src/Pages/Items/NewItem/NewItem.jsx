@@ -3,20 +3,26 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Message from '../../../Utils/Message/Message';
 import Button from '../../../Utils/Button';
-import { getUser, getElectronics, getCleaning, getStationary } from '../../../Components/redux/store';
+
 import styles from "./Newitem.module.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function NewItem() {
+    const Navigate=useNavigate();
     const electronics = getElectronics();
     const cleaning = getCleaning();
     const stationary = getStationary();
-    const user = getUser();
+
+    const [loading,setloading]=useState(false);
+    const [error,seterror]=useState(false);
+    const [message,setmessage]=useState("");
 
     const [formData, setFormData] = useState({
         itemname: "",
         category: "Stationary",
-        units: "Each",
-        itemcode: ""
+        unit: "Each",
+        itemcode: "",
+        description:""
     });
 
     const handleChange = function (e) {
@@ -41,29 +47,55 @@ export default function NewItem() {
     const handleSubmit = async function (e) {
         e.preventDefault();
         try {
+            setmessage("");
+            seterror(false);
+            setloading(true);
             const res = await fetch("/api/item/newitem", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ ...formData, userRef: user._id, status: "pending"})
+                body: JSON.stringify({ ...formData, userRef: user._id, status: "pending",userName:user.name})
             });
             const data = await res.json();
-            console.log(data);
+            if(data.status==="error"||data.status==="fail")
+           {
+            setmessage(data.message);
+           seterror(true);
+            setloading(false);
+            return;
+           }
+            setmessage(data.message);
+         
+            setloading(false);
+            setFormData( {itemname: "",
+            category: "Stationary",
+            unit: "Each",
+            itemcode: "",
+            description:""})
+            Navigate("/viewitem")
         } catch (err) {
-            console.log(err);
+            setmessage(data.message);
+            seterror(true);
+            setloading(false);
         }
     };
-  console.log(formData)
+ console.log(formData)
     return (
-        <div>
+        
+        <div className={styles.overall}>
+            
+            <div className={styles.design}>
+                <div className={styles.text}>
+                <h1 className={styles.formHeading}>Add an Item</h1>
+                </div>
             <form onSubmit={handleSubmit} className={styles.form}>
-                <h1>Add an Item</h1>
-                <div>
+               
+                <div className={styles.inputContainer} >
                     <label htmlFor='itemname'>Enter the item Name</label>
                     <input type='text' id='itemname' onChange={handleChange} value={formData.itemname} />
                 </div>
-                <div>
+                <div className={styles.inputContainer}>
             <label htmlFor='category'>Enter the item category</label>
              <select id="category" onChange={handleChange} value={formData.category} >
                 <option value="Stationary" >Stationary</option>
@@ -72,9 +104,9 @@ export default function NewItem() {
              </select>
             
         </div>
-        <div>
-            <label htmlFor='units'>Enter the units</label>
-            <select id="units" onChange={handleChange} value={formData.units}>
+        <div className={styles.inputContainer}>
+            <label htmlFor='unit'>Enter the units</label>
+            <select id="unit" onChange={handleChange} value={formData.unit}>
   
     <optgroup label="Countable Units">
         <option value="Each">Each</option>
@@ -114,7 +146,7 @@ export default function NewItem() {
     </optgroup>
 </select>
         </div>
-        <div>
+        <div className={styles.inputContainer}>
     <label htmlFor='itemcode'>Item Code</label>
     <input
         type="text"
@@ -122,14 +154,17 @@ export default function NewItem() {
        value={formData.itemcode}
     />
 </div>
-        <div>
+        <div className={styles.inputContainer}>
             <label htmlFor='description'>description</label>
             <input type="text" id='description' onChange={handleChange} value={formData.description} />
         </div>
                 <div>
-                    <Button message="submit" category='formButton' type="submit" />
+                    <Button message="submit" category='formButton' type="submit" loading={loading} loadmessage='submitting' />
                 </div>
+               {message&&<Message message={message} type={error?"error":"success"}/>}
             </form>
         </div>
+        </div>
+      
     );
 }

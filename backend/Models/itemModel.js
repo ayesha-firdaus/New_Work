@@ -18,13 +18,17 @@ const  itemSchema=new mongoose.Schema({
         required:[true,"itemcode is needed"],
 
     },
-    units:{
+    unit:{
         type:String,
         required:true
     },
     description:{
        type:String,
        required:true
+    },
+    userName:{
+        type:String,
+        required:true
     },
     userRef: {
         type: mongoose.Schema.Types.ObjectId,
@@ -33,7 +37,7 @@ const  itemSchema=new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["pending", "approved"],
+        enum: ["pending", "approved","rejected"],
         required: true
     }
 

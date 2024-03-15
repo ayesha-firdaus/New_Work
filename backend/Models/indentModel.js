@@ -49,12 +49,12 @@ const indentSchema=new mongoose.Schema({
     },
     status:{
         type:String,
-        deafult:"pending"
+        default:"pending"
     },
     sessionHead:{
         type:String,
     },
-    year:{
+    requistionNumber:{
         type:String,
         required:true,
     },

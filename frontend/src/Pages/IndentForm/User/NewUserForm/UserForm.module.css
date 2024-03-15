@@ -23,8 +23,9 @@ input,textarea{
     text-align: center;
 }
 .IndenterDetails{
+    width: 100%;
     display: grid;
-    grid-template-columns: 15fr 35fr 15fr 35fr;
+    grid-template-columns: repeat(5,1fr);
  
 }
 .IndentDetails{
@@ -48,8 +49,7 @@ input,textarea{
 .requisitiondetails{
   color: #e61425;
   font-size: 1.2rem;
-  display: grid;
-  grid-template-columns: 50fr 50fr;
+
   
 
 }

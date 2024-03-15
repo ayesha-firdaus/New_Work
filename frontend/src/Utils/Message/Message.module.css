@@ -1,10 +1,12 @@
 .messageContainer{
-  width: inherit;
-  padding: 1.2rem;
-  font-size: 1.8rem;
-  color: #343434;
-
  
+  padding: 2rem;
+  font-size: 1.5rem;
+ 
+  text-align: center;
+  border-radius: 6px;
+  
+  color: #343434;
 
 
 }
@@ -14,8 +16,13 @@
 
 
 .error {
-  border-bottom: 2px solid #ec3966; /* Add '2px solid' or your preferred border style */
+
+  background-color: #f7a399;
+
+/* Add '2px solid' or your preferred border style */
 }
 .success {
-  border-bottom: 2px solid #2E8B57; /* Add '2px solid' or your preferred border style */
+  background-color: #9fe2bf; 
+ 
+  /* Add '2px solid' or your preferred border style */
 }

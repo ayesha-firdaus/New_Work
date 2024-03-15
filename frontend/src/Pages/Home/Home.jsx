@@ -10,60 +10,8 @@ import { getUser } from '../../Components/redux/store';
 
 export default function Home() {
 
- const dispatch=useDispatch();
- const user=getUser();
- const category1='Electronics';
- const category2='Stationary';
- const category3='Cleaning';
-  useEffect(() => {
-   
-    
 
 
-  async function getelectronics()
-  {
-    try{
-      dispatch(getItemStart());
-    const res=await fetch(`/api/item/viewitem/${category1}`);
-    const data=await res.json();
-    dispatch(getItemSuccessElectronics(data.item));
-    getstationary();
-  }
-  catch(err)
-  {
-    dispatch(getItemError());
-  }
-}
-async function getstationary()
-{
-  try{
-    dispatch(getItemStart());
-    const res=await fetch(`/api/item/viewitem/${category2}`);
-    const data=await res.json();
-    dispatch(getItemSuccessStationary(data.item));
-    getcleaning();
-  }
-  catch(err){
-  
-  }
-
-}
-async function getcleaning()
-{
-  try{
-  const res=await fetch(`/api/item/viewitem/${category3}`);
-    const data=await res.json();
-    dispatch(getItemSuccessCleaning(data.item));
-  }
-  catch(err)
-  {
-    console.log(err);
-  }
-}
-
-getelectronics();
-  }, [category1,category2,category3]);
-    
   
   return (
     <div className={styles.HomeDesign}>

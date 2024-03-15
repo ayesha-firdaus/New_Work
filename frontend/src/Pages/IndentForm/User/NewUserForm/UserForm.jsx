@@ -24,9 +24,21 @@ const [error,seterror]=useState(false);
       setIndentNumber(fetchedIndentNumber);
   
       // Update the year after fetching indentNumber
-      const currentYear = new Date().getFullYear();
-      const yearString = `${currentYear - 1}${currentYear}${fetchedIndentNumber + 1}`;
-      setFormData((prevData) => ({ ...prevData, year: yearString }));
+      const currentDate = new Date()
+      const currentMonth=currentDate.getMonth();
+      const currentYear=currentDate.getFullYear();
+      let yearString='';
+      if(currentMonth>=3&&currentMonth<=11)
+      {
+      yearString = `${currentYear}${currentYear+1}${fetchedIndentNumber + 1}`;
+      }
+      if(currentMonth>=0&&currentMonth<=2)
+      {
+      yearString = `${currentYear - 1}${currentYear}${fetchedIndentNumber + 1}`;
+      }
+     
+      
+      setFormData((prevData) => ({ ...prevData, requistionNumber: yearString }));
     }
     viewAllIndent();
   }, []);
@@ -50,7 +62,7 @@ const handleCategorySelect=function(category){
     project: false,
     },
     requisition:false,
-    year:"",
+    requistionNumber:"",
     itemArray:[InitialItem],
     budget: 0,
     amount:0,
@@ -153,7 +165,7 @@ const handleSubmitSuccess = () => {
       project: false,
       },
       requisition:false,
-      year:"",
+      requistionNumber:"",
       itemArray:[InitialItem],
       budget: 0,
       amount:0,
@@ -206,6 +218,10 @@ const handleSubmit = async (e) => {
                   </td>
                   <th >Section</th>
                   <td><input type='text' id='section'value={user&&user.designation}      onChange={handleFormDataChange}></input></td>
+                  <td className="flex">
+                 <label htmlFor="requistionNumber">Requisition Number</label>
+                <input type="text"  value={formData.requistionNumber}/>
+              </td>
                 </tr>
               </table>
 
@@ -262,10 +278,7 @@ const handleSubmit = async (e) => {
               <label htmlFor="requisiton">Yearly Requisition</label>
               <input type="checkbox" checked={formData.requisition===true}  onClick={()=>{setFormData((prevData)=>({...prevData, requisition:!prevData.requisition}))}} />
               </td>
-              <td className="flex">
-                 <label htmlFor="year">Requisition Year</label>
-                <input type="text"  value={formData.year}/>
-              </td>
+            
               </table>
 
 
@@ -308,8 +321,7 @@ const handleSubmit = async (e) => {
                 value={options?.find(opt => opt.label === item.name)}
                 onChange={(selectedOption) => handleChange(selectedOption, index)}
                 options={options?.map((el) => ({
-                  value: { itemName: el.itemName, itemCode: el.itemCode },
-                  label: `${el.itemName} (${el.itemCode})`,
+                  label: `${el.itemname} (${el.itemcode})`,
                 }))}
                 isSearchable
                 filterOptions={filterOptions}

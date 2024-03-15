@@ -64,7 +64,7 @@ export default function Login() {
       console.log(loading)
       console.log(formData)
       return (
-        <div  className={styles.signup}>
+        <div  className={`${styles.signup}`}>
              <div className={styles.overall}>
             <div className={styles.text}>
             <h1 className={styles.formHeading}>Log in</h1>
